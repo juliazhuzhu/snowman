@@ -217,7 +217,6 @@
 		F36DBF0D1A6B57B7008D81C7 /* coinsin.ogg in Resources */ = {isa = PBXBuildFile; fileRef = F36DBE9B1A6B57B7008D81C7 /* coinsin.ogg */; };
 		F36DBF0E1A6B57B7008D81C7 /* combo_3.ogg in Resources */ = {isa = PBXBuildFile; fileRef = F36DBE9C1A6B57B7008D81C7 /* combo_3.ogg */; };
 		F36DBF0F1A6B57B7008D81C7 /* landing.ogg in Resources */ = {isa = PBXBuildFile; fileRef = F36DBE9D1A6B57B7008D81C7 /* landing.ogg */; };
-		F36DBF101A6B57B7008D81C7 /* music.ogg in Resources */ = {isa = PBXBuildFile; fileRef = F36DBE9E1A6B57B7008D81C7 /* music.ogg */; };
 		F36DBF111A6B57B7008D81C7 /* pop.ogg in Resources */ = {isa = PBXBuildFile; fileRef = F36DBE9F1A6B57B7008D81C7 /* pop.ogg */; };
 		F36DBF121A6B57B7008D81C7 /* readygo.ogg in Resources */ = {isa = PBXBuildFile; fileRef = F36DBEA01A6B57B7008D81C7 /* readygo.ogg */; };
 		F36DBF131A6B57B7008D81C7 /* select.ogg in Resources */ = {isa = PBXBuildFile; fileRef = F36DBEA11A6B57B7008D81C7 /* select.ogg */; };
@@ -555,7 +554,6 @@
 		F36DBE9B1A6B57B7008D81C7 /* coinsin.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = coinsin.ogg; sourceTree = "<group>"; };
 		F36DBE9C1A6B57B7008D81C7 /* combo_3.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = combo_3.ogg; sourceTree = "<group>"; };
 		F36DBE9D1A6B57B7008D81C7 /* landing.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = landing.ogg; sourceTree = "<group>"; };
-		F36DBE9E1A6B57B7008D81C7 /* music.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = music.ogg; sourceTree = "<group>"; };
 		F36DBE9F1A6B57B7008D81C7 /* pop.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = pop.ogg; sourceTree = "<group>"; };
 		F36DBEA01A6B57B7008D81C7 /* readygo.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = readygo.ogg; sourceTree = "<group>"; };
 		F36DBEA11A6B57B7008D81C7 /* select.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = select.ogg; sourceTree = "<group>"; };
@@ -836,7 +834,6 @@
 				F36DBE9B1A6B57B7008D81C7 /* coinsin.ogg */,
 				F36DBE9C1A6B57B7008D81C7 /* combo_3.ogg */,
 				F36DBE9D1A6B57B7008D81C7 /* landing.ogg */,
-				F36DBE9E1A6B57B7008D81C7 /* music.ogg */,
 				F36DBE9F1A6B57B7008D81C7 /* pop.ogg */,
 				F36DBEA01A6B57B7008D81C7 /* readygo.ogg */,
 				F36DBEA11A6B57B7008D81C7 /* select.ogg */,
@@ -1284,7 +1281,6 @@
 				F36DBECB1A6B57B7008D81C7 /* combo_2.png in Resources */,
 				F36DBEEC1A6B57B7008D81C7 /* Props_Paint.png in Resources */,
 				F36DBEA31A6B57B7008D81C7 /* ui_ad.png in Resources */,
-				F36DBF101A6B57B7008D81C7 /* music.ogg in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				F36DBED71A6B57B7008D81C7 /* Help_1.png in Resources */,
 				F36DBF011A6B57B7008D81C7 /* NextGameRound.ogg in Resources */,
