@@ -31,3 +31,4 @@ storeParams->setObject(__String::create("ExamplePublicKey"), "androidPublicKey")
 
 AnySDK的接口包在PluginChannel.cpp中
 参考http://www.anysdk.com/2014/11/1566
+github 简单那使用http://rogerdudler.github.io/git-guide/index.zh.html
