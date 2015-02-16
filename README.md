@@ -17,4 +17,4 @@ ios 支付调试的时候，需要建立SANDIBOX账户，在IOS的设置中也�
 
 https://itunesconnect.apple.com/WebObjects/iTunesConnect.woa,完善银行账户信息
 
-bondle identifier == ??
+在iTune创建app时，这里的Bundle ID一定要跟你的项目中的info.plist中的Bundle ID一致.
