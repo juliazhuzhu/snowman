@@ -29,3 +29,4 @@ storeParams->setObject(__String::create("ExamplePublicKey"), "androidPublicKey")
 
 的值。
 
+AnySDK的借口包在PluginChannel.cpp中
