@@ -14,12 +14,62 @@
 #include "PopupLayerExt.h"
 #include "DialogLayer.h"
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-#include "PluginChannel.h"
+#include "SFGameNativeInterface.h"
 #else
 #include "Cocos2dxStore.h"
 #include "DiamondAssets.h"
 
 #endif
+
+//支付回调类
+class SFNativeIPayResulBackImp : public SFNativeIPayResulBack
+{
+    virtual void onCanceled(const char* remain)
+    {
+        //resultText->setString("支付取消");
+    }
+    virtual void onFailed(const char* remain)
+    {
+        //resultText->setString("支付失败");
+    }
+    virtual void onSuccess(const char* orderNo)
+    {
+        CCLog("pay okay");
+        GAMEDATA::getInstance()->charge(30);
+        //resultText->setString("支付成功");
+    }
+
+};
+
+//退出回调类
+class SFGameExitCallBackImpl : public SFNativeGameExitCallBack
+{
+    virtual void onGameExit(bool result)
+    {
+
+    //result:false 代表SDK取消退出
+    if (!result) {
+        return;
+    }
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WP8) || (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
+        MessageBox("You pressed the close button. Windows Store Apps do not implement a close button.", "Alert");
+        return;
+#endif
+
+        Director::getInstance()->end();
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+        exit(0);
+#endif
+    }
+
+
+};
+
+//支付回调
+SFNativeIPayResulBackImp payCallback = SFNativeIPayResulBackImp();
+//退出回调
+SFGameExitCallBackImpl exitCallback = SFGameExitCallBackImpl();
 
 bool GameLayer::init(){
 	if(!Layer::init()){
@@ -431,6 +481,14 @@ void GameLayer::chargeCallback(cocos2d::Node *pNode,void* pData)
             //GAMEDATA::getInstance()->charge(15);
             hideLinkNum();
         }
+#else #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+        //CCLOG("recharge");
+        CCLOG("PluginChannel pay");
+        SFGameNativeInterface::setSFIPayResulBack(&payCallback);
+        //支付，参数为计费点编号
+        SFGameNativeInterface::pay("1");
+        //PluginChannel::getInstance()->payment();//调用渠道支付
+        hideLinkNum();
 #endif
     }
 
@@ -444,11 +502,11 @@ void GameLayer::noCoinIndication()
     label_ind->setVisible(true);
     
 
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    CCLOG("recharge");
-    CCLOG("PluginChannel pay");
-    PluginChannel::getInstance()->payment();//调用渠道支付
-#else
+//#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    //CCLOG("recharge");
+    //CCLOG("PluginChannel pay");
+    //PluginChannel::getInstance()->payment();//调用渠道支付
+//#else
     
     DialogLayer* dlg = DialogLayer::create();
     this->addChild(dlg);
@@ -460,7 +518,7 @@ void GameLayer::noCoinIndication()
     pl->setContentText("购买30颗钻石，花费6元");
     // 添加按钮，设置图片，文字，tag 信息
     pl->addButton("ok_but.png", "ok_but.png", "", 1);
-    pl->addButton("cancel.png", "cancel.png", "", 2);
+    pl->addButton("cancel_but.png", "cancel_but.png", "", 2);
             
     pl->setBackgroundLayer(dlg);
     CCLog("current opacity %d",this->getOpacity());
@@ -470,7 +528,7 @@ void GameLayer::noCoinIndication()
     this->addChild(pl);
     
     
-#endif
+//#endif
 }
 
 void GameLayer::bombIndication()

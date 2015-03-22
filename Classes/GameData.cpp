@@ -16,7 +16,7 @@ void GAMEDATA::init(){
     setCurLevel(0);
 	setCurScore(0);
 	setHistoryScore(UserDefault::getInstance()->getIntegerForKey("highestScore",0));
-    cur_coin = UserDefault::getInstance()->getIntegerForKey("curCoin",9);
+    cur_coin = UserDefault::getInstance()->getIntegerForKey("curCoin",18);
     log("current coin %d", cur_coin);
 }
 
@@ -24,7 +24,7 @@ void GAMEDATA::continueFromLastLevel(){
     setCurLevel(UserDefault::getInstance()->getIntegerForKey("curLevel",0));
     setCurScore(UserDefault::getInstance()->getIntegerForKey("curScore",0));
     setHistoryScore(UserDefault::getInstance()->getIntegerForKey("highestScore",0));
-    cur_coin = UserDefault::getInstance()->getIntegerForKey("curCoin",9);
+    cur_coin = UserDefault::getInstance()->getIntegerForKey("curCoin",18);
 }
 
 void GAMEDATA::setCurLevel(int level){
