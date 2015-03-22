@@ -29,7 +29,9 @@ public final class R {
         public static final int plugin_login=0x7f030001;
     }
     public static final class string {
+        public static final int action_settings=0x7f040017;
         public static final int app_name=0x7f040015;
+        public static final int hello_world=0x7f040018;
         public static final int plugin_accountSwitch=0x7f040011;
         public static final int plugin_achievement=0x7f040008;
         public static final int plugin_antiAddictionQuery=0x7f04000d;
@@ -51,5 +53,7 @@ public final class R {
         public static final int plugin_submitLoginGameRole=0x7f040013;
         public static final int plugin_sure=0x7f040010;
         public static final int plugin_tips=0x7f040014;
+        public static final int sf_class_name=0x7f040019;
+        public static final int title_activity_splash=0x7f040016;
     }
 }
