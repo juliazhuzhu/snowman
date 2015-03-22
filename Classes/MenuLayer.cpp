@@ -7,7 +7,7 @@
 #include "DialogLayer.h"
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-#include "PluginChannel.h"
+//#include "PluginChannel.h"
 #endif
 
 bool MenuLayer::init(){
@@ -20,8 +20,11 @@ bool MenuLayer::init(){
 	Sprite* background = Sprite::create("bg_menuscene.jpg");
 	background->setPosition(visibleSize.width/2,visibleSize.height/2);
 	this->addChild(background,-1);
-    
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+	Sprite* title = Sprite::create("title_2.png");
+#else
     Sprite* title = Sprite::create("title.png");
+#endif
     title->setPosition(visibleSize.width/2,visibleSize.height/2+200);
     this->addChild(title,-1);
 	
@@ -64,11 +67,16 @@ void MenuLayer::continueGame(){
     CCLOG("CONTINUE!");
     GAMEDATA::getInstance()->continueFromLastLevel();
 
-//#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    CCLOG("PluginChannel Login");
-    bReady = true;
-//    PluginChannel::getInstance()->login();//调用渠道登陆
-//#else
+/*#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    if (AgentManager::getInstance()->getChannelId() != "1001")//mm
+    {
+        CCLOG("PluginChannel Login");
+        bReady = true;
+        PluginChannel::getInstance()->login();//调用渠道登陆
+     }
+     else
+       Director::getInstance()->replaceScene(GameScene::create());
+#else*/
     Director::getInstance()->replaceScene(GameScene::create());
 //#endif
     
@@ -81,11 +89,16 @@ void MenuLayer::startGameCallback(cocos2d::Node *pNode, void* pData){
     if (pNode->getTag() == 1)
     {
         GAMEDATA::getInstance()->init();
-//#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-        CCLOG("PluginChannel Login");
-        bReady = true;
- //       PluginChannel::getInstance()->login();//调用渠道登陆
-//#else
+/*#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+        if (AgentManager::getInstance()->getChannelId() != "1001")//mm
+        {
+        	CCLOG("PluginChannel Login");
+        	bReady = true;
+        	PluginChannel::getInstance()->login();//调用渠道登陆
+        }
+        else
+        	Director::getInstance()->replaceScene(GameScene::create());
+#else*/
         Director::getInstance()->replaceScene(GameScene::create());
 //#endif
     }
@@ -107,7 +120,7 @@ void MenuLayer::startGame(){
         pl->setContentText("重新开始?之前的游戏进度会被清除哦!");
         // 添加按钮，设置图片，文字，tag 信息
         pl->addButton("ok_but.png", "ok_but.png", "", 1);
-        pl->addButton("cancel.png", "cancel.png", "", 2);
+        pl->addButton("cancel_but.png", "cancel_but.png", "", 2);
         
         pl->setBackgroundLayer(dlg);
         CCLog("current opacity %d",this->getOpacity());
@@ -118,11 +131,17 @@ void MenuLayer::startGame(){
         return;
     }
     GAMEDATA::getInstance()->init();
-//#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    CCLOG("PluginChannel Login");
-    bReady = true;
-   // PluginChannel::getInstance()->login();//调用渠道登陆
-//#else
+/*#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    CCLOG("PluginChannel channel Id:%s",AgentManager::getInstance()->getChannelId().c_str());
+    if (AgentManager::getInstance()->getChannelId() != "1001")//mm
+    {
+        CCLOG("PluginChannel Login");
+        bReady = true;
+        PluginChannel::getInstance()->login();//调用渠道登陆
+    }
+    else
+    	Director::getInstance()->replaceScene(GameScene::create());
+#else*/
 	Director::getInstance()->replaceScene(GameScene::create());
 //#endif
 }
@@ -139,10 +158,10 @@ void MenuLayer::onKeyReleased(EventKeyboard::KeyCode keyCode, cocos2d::Event *ev
 void MenuLayer::update(float dt)
 {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    if(PluginChannel::getInstance()->isLogined()&&bReady)//判断登陆状态
+   /* if(PluginChannel::getInstance()->isLogined()&&bReady)//判断登陆状态
     {
         Director::getInstance()->replaceScene(GameScene::create());
-    }
+    }*/
 #endif
 }
 
