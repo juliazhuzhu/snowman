@@ -21,6 +21,7 @@
 
 #endif
 
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
 //支付回调类
 class SFNativeIPayResulBackImp : public SFNativeIPayResulBack
 {
@@ -70,6 +71,8 @@ class SFGameExitCallBackImpl : public SFNativeGameExitCallBack
 SFNativeIPayResulBackImp payCallback = SFNativeIPayResulBackImp();
 //退出回调
 SFGameExitCallBackImpl exitCallback = SFGameExitCallBackImpl();
+
+#endif
 
 bool GameLayer::init(){
 	if(!Layer::init()){
