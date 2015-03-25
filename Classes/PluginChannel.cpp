@@ -114,8 +114,14 @@ void PluginChannel::payment()
 	if(_pluginsIAPMap)
 	{
         std::map<std::string, std::string> productInfo;
-		productInfo["Product_Price"] = "6";
-		productInfo["Product_Id"] = "30000887966502";
+
+		productInfo["Product_Price"] = "600";
+
+		//if (AgentManager::getInstance()->getChannelId() != "1001")//MM
+			productInfo["Product_Id"] = "30000892125101";
+		//else
+			//productInfo["Product_Id"] = "1";
+
 		productInfo["Product_Name"] = "30颗钻石";
 		productInfo["Server_Id"] = "1";
 		productInfo["Product_Count"] = "1";
@@ -147,11 +153,11 @@ void PluginChannel::onPayResult(PayResultCode ret, const char* msg, TProductInfo
 		{
 		case kPaySuccess://支付成功回调
 			temp = "Success";
-			MessageBox("Succeed","Payment");
-      GAMEDATA::getInstance()->charge(30);
+			MessageBox("成功","支付");
+			GAMEDATA::getInstance()->charge(30);
 			break;
 		case kPayFail://支付失败回调
-			MessageBox("Fail","Payment");
+			MessageBox("失败","支付");
 			break;
 		case kPayCancel://支付取消回调
 			MessageBox("Cancel","Payment");
