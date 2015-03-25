@@ -8,7 +8,7 @@
     <uses-sdk android:minSdkVersion="9"/>
     <uses-feature android:glEsVersion="0x00020000" />
 
-    <application android:label="popStar"
+    <application android:label="snowman"
                  android:icon="@drawable/icon">
 					 
         <!-- Tell Cocos2dxActivity the name of our .so -->
@@ -16,7 +16,7 @@
 	              android:value="cocos2dcpp" />
 
         <activity android:name="org.cocos2dx.cpp.AppActivity"
-                  android:label="popStar"
+                  android:label="Snow Man"
                   android:screenOrientation="portrait"
                   android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
                   android:configChanges="orientation">
