@@ -28,6 +28,7 @@ using namespace soomla;
 #define CREAMCUP_ITEM_ID "cream_cup"
 
 
+
 MuffinRushAssets *MuffinRushAssets::create() {
     MuffinRushAssets *ret = new MuffinRushAssets();
     ret->autorelease();

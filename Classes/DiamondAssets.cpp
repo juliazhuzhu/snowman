@@ -1,6 +1,5 @@
 
 #include "DiamondAssets.h"
-
 #include "CCVirtualCurrency.h"
 #include "CCVirtualCurrencyPack.h"
 #include "CCVirtualGood.h"

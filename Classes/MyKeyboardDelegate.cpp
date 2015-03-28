@@ -44,7 +44,7 @@ void MyKeyboardDelegate::keyBackClicked(Node* node)
     pl->setContentText("真滴要腿粗嘛？");
     // 添加按钮，设置图片，文字，tag 信息
     pl->addButton("ok_but.png", "ok_but.png", "", 1);
-    pl->addButton("cancel.png", "cancel.png", "", 2);
+    pl->addButton("cancel_but.png", "cancel_but.png", "", 2);
     
     pl->setBackgroundLayer(dlg);
     //CCLog("current opacity %d",this->getOpacity());

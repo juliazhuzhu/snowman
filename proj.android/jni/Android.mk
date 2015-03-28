@@ -1,6 +1,13 @@
 LOCAL_PATH := $(call my-dir)
 $(call import-add-path,$(LOCAL_PATH)/../)
 
+#add by snowfish -s
+include $(CLEAR_VARS)
+LOCAL_MODULE := sfunityoffline
+LOCAL_SRC_FILES := libsfunityoffline.so
+include $(PREBUILT_SHARED_LIBRARY)
+#add by snowfish -e
+
 include $(CLEAR_VARS)
 
 $(call import-add-path,$(LOCAL_PATH)/../../cocos2d)
@@ -35,17 +42,18 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
 		../../Classes/DialogLayer.cpp \
 		../../Classes/PopupLayer.cpp \
 		../../Classes/XMLParser.cpp \
-		../../Classes/PluginChannel.cpp	\
 		../../Classes/PopupLayerExt.cpp
 
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes \
-		$(LOCAL_PATH)/../protocols/android \
-		$(LOCAL_PATH)/../protocols/include
 
 LOCAL_STATIC_LIBRARIES := cocos2dx_static
-LOCAL_STATIC_LIBRARIES += PluginProtocolStatic
+
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes
+
+#add by snowfish -s
+LOCAL_SHARED_LIBRARIES += sfunityoffline
+#add by snowfish -e
 
 include $(BUILD_SHARED_LIBRARY)
 
 $(call import-module,.)
-$(call import-module,protocols/android)
+

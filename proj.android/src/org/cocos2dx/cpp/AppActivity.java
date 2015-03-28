@@ -29,55 +29,62 @@ package org.cocos2dx.cpp;
 
 import org.cocos2dx.lib.Cocos2dxActivity;
 
-import com.anysdk.framework.PluginWrapper;
-import com.anysdk.framework.Wrapper;
+import com.snowfish.cn.ganga.offline.basic.SFActionCallback;
+import com.snowfish.cn.ganga.offline.basic.SFNativeAdapter;
+import com.snowfish.cn.ganga.offline.helper.SFCommonSDKInterface;
 
 import android.content.Intent;
 import android.os.Bundle;
 
 public class AppActivity extends Cocos2dxActivity {
+	//加载c++代码库，如果需要加载其他的库文件，请将sfunityoffline放最前面.
+    static {
+        System.loadLibrary("sfunityoffline");
+   }
+    
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
-		PluginWrapper.init(this);
-		wrapper.nativeInitPlugins();
-		
-		
-	}
-
-	@Override
-	protected void onResume() {
-		PluginWrapper.onResume();
-		super.onResume();
-		
-	}
-
-	@Override
-	protected void onPause() {
-		PluginWrapper.onPause();
-		super.onPause();
+		//onInit方法用于需要在游戏主Activity中的onCreate中调用，只需调用一次
+		SFCommonSDKInterface.onInit(this);		
+		//在游戏activity中调用，防止线程不统一问题。
+		//cocos 2.0版本没有函数runOnGLThread，需要自行添加类似方法
+		SFNativeAdapter.init(this, new SFActionCallback() {
+			
+			@Override
+			public void callback(Runnable run) {
+				runOnGLThread(run);
+			}
+		});
 		
 	}
 
 	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		PluginWrapper.onActivityResult(requestCode, resultCode, data);
-		super.onActivityResult(requestCode, resultCode, data);
-	}
-
-	@Override
-	protected void onNewIntent(Intent intent) {
-		PluginWrapper.onNewIntent(intent);
-		super.onNewIntent(intent);
-	}
-
-
-	@Override
-	protected void onStop() {
-		PluginWrapper.onStop();
+	public void onStop() {
 		super.onStop();
+	}
+
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+	}
+
+	@Override
+	public void onPause() {
+		super.onPause();
+	}
+
+
+	@Override
+	public void onRestart() {
+		super.onRestart();
 	}
 	
 }
