@@ -29,6 +29,8 @@ storeParams->setObject(__String::create("ExamplePublicKey"), "androidPublicKey")
 
 的值。
 
+直接把 jansson 目录拖到 popStar目录下，不能拖到cocos2d_libs.xcodeproj的对应目录下.
+
 AnySDK的接口包在PluginChannel.cpp中
 参考http://www.anysdk.com/2014/11/1566
 github 简单那使用http://rogerdudler.github.io/git-guide/index.zh.html
