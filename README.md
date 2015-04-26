@@ -1,7 +1,7 @@
 # snowman
 added by xiaoye on Feb 15th, 2015.
 
-cocos2dx 3.3
+cocos2dx 3.4
 
 http://soom.la ios 支付
 
