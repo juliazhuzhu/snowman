@@ -10,8 +10,9 @@ https://github.com/soomla/cocos2dx-store
 https://github.com/soomla/soomla-cocos2dx-core
 
 还有jansson
+直接把 jansson 目录拖到 popStar目录下，不能拖到cocos2d_libs.xcodeproj的对应目录下.
 
-android pay 使用的anysdk
+android pay 使用的1sdk
 
 ios 支付调试的时候，需要建立SANDIBOX账户，在IOS的设置中也设置该账户
 
@@ -29,7 +30,7 @@ storeParams->setObject(__String::create("ExamplePublicKey"), "androidPublicKey")
 
 的值。
 
-直接把 jansson 目录拖到 popStar目录下，不能拖到cocos2d_libs.xcodeproj的对应目录下.
+
 
 AnySDK的接口包在PluginChannel.cpp中
 参考http://www.anysdk.com/2014/11/1566
