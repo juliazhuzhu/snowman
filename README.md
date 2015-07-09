@@ -35,3 +35,17 @@ storeParams->setObject(__String::create("ExamplePublicKey"), "androidPublicKey")
 AnySDK的接口包在PluginChannel.cpp中
 参考http://www.anysdk.com/2014/11/1566
 github 简单那使用http://rogerdudler.github.io/git-guide/index.zh.html
+
+从MAC MINI迁移到MAC PRO上的时候遇到一个问题。
+在MAC PRO环境搭建好以后，编译运行游戏，在ANDROID总是遇到这么一个问题， LIBC Fatal error (SIGILL).
+IOS 没有问题。
+所以应该不是APP层面的问题，应该是环境或者参数设定的问题。
+注意到，在运行build_native.sh出现告警，提示
+Android NDK: WARNING: APP_PLATFORM android-19 is larger than android:minSdkVersion 9 in ./AndroidMan
+解决办法
+只需要在你的工程的：
+Application.mk
+文件中添加如下代码即可：
+[cpp] view plaincopy
+APP_PLATFORM := android-9
+重新编译运行，问题解决。
